@@ -1,26 +1,36 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
-// A generic grouping for any identifiable entity
-message NamedThing
+message AirSample
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
+  float latitude = 0
+  float longitude = 0
+ repeated  speciesEnum species = 0
+  biomeTypeEnum sampleBiome = 0
+  float altitude = 0
+  string id = 0
  }
-// Represents a Person
-message Person
+// A sample is a limited quantity of something (e.g. an individual or set of individuals from a population,  or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration,  or trial use.
+message Sample
  {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  string primaryEmail = 0
-  date birthDate = 0
-  integer ageInYears = 0
-  personStatus vitalStatus = 0
+  string id = 0
+  float latitude = 0
+  float longitude = 0
+ repeated  speciesEnum species = 0
+  biomeTypeEnum sampleBiome = 0
  }
-// A holder for Person objects
-message PersonCollection
+// A collection of samples.
+message SampleCollection
  {
- repeated  person entries = 0
+  string id = 0
+ repeated  sample samples = 0
+ }
+message SoilSample
+ {
+  float latitude = 0
+  float longitude = 0
+ repeated  speciesEnum species = 0
+  biomeTypeEnum sampleBiome = 0
+  float depth = 0
+  string id = 0
  }

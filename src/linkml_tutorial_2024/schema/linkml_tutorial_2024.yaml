@@ -15,6 +15,11 @@ prefixes:
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
+  obo: http://purl.obolibrary.org/obo/
+  ENVO: http://purl.obolibrary.org/obo/ENVO_
+  SIO: http://semanticscience.org/resource/
+  nmdc: https://w3id.org/nmdc/
+  KBase: https://kbase.us/
 default_prefix: linkml_tutorial_2024
 default_range: string
 
@@ -23,74 +28,119 @@ imports:
 
 classes:
 
-  NamedThing:
+  SampleCollection:
     description: >-
-      A generic grouping for any identifiable entity
+      A collection of samples.
     slots:
       - id
-      - name
-      - description
-    class_uri: schema:Thing
-
-  Person:
-    is_a: NamedThing
-    description: >-
-      Represents a Person
-    slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
-
-  PersonCollection:
+      - samples
     tree_root: true
-    description: >-
-      A holder for Person objects
-    attributes:
-      entries:
-        range: Person
-        multivalued: true
-        inlined: true
+
+  Sample:
+    aliases: ["Biosample", "Environmental Sample"]
+    description: >- 
+      A sample is a limited quantity of something (e.g. an individual or set of individuals from a population, 
+      or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration, 
+      or trial use.
+    slots:
+      - id
+      - latitude
+      - longitude
+      - species
+      - sample biome
+    id_prefixes:
+      - KBase
+      - nmdc
+    exact_mappings:
+      - SIO:001050
+    class_uri: SIO:001050
+
+  Air Sample:
+    is_a: Sample
+    slots:
+      - altitude
+    slot_usage:
+      id:
+        pattern: '^airsample:\d*'   ## regular expression for the id
+
+
+  Soil Sample:
+    is_a: Sample
+    slots:
+      - depth
+    slot_usage:
+        id:
+          pattern: '^soilsample:\d*'   ## regular expression for the id
 
 slots:
-  id:
-    identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
-  name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
-  description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
+    id:
+        description: >-
+          The unique identifier for the biosample.
+        required: true
+        identifier: true
+        range: string
+    altitude:
+        description: >-
+          Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.
+        range: float
+    latitude:
+        description: >-
+          Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the 
+          equatorial plane.
+        range: float
+        slot_uri: schema:latitude
+    longitude:
+        description: >-
+          Longitude is a geographic position that refers to the angle east or west of a reference meridian between the 
+          two geographical poles to another meridian that passes through an arbitrary point.
+        range: float
+        slot_uri: schema:longitude
+    species:
+        description: >-
+          The species of micro organisms collected in the sample.
+        range: SpeciesEnum
+        multivalued: true
+    depth:
+        description: >-
+          The depth in centimeters of the biosample.
+        range: float
+    sample biome:
+        description: >-
+          The biome type of the biosample
+        range: BiomeTypeEnum
+    samples:
+        description: >-
+          The samples in the collection.
+        range: Sample
+        multivalued: true
+        inlined_as_list: true
+        inlined: true
 
 enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+    BiomeTypeEnum:
+        description: >-
+          The type of biome.
+        permissible_values:
+          forest:
+            meaning: ENVO:00000111
+          lake:
+            meaning: ENVO:00000020
+          ocean:
+            meaning: ENVO:00000015
+          desert:
+            meaning: ENVO:01001357
+          air:
+            meaning: ENVO:00002005
+
+    SpeciesEnum:
+        description: >-
+          The species of micro organisms collected in the sample.
+        reachable_from:
+          source_ontology: obo:ncbitaxon
+          source_nodes:
+            - NCBITaxon:131567  # cellular organism, maybe we constrain further to Bacteria
+          include_self: false
+          relationship_types:
+            - rdfs:subClassOf
+
+

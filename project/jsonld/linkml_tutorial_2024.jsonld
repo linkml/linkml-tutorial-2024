@@ -34,6 +34,26 @@
     {
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "obo",
+      "prefix_reference": "http://purl.obolibrary.org/obo/"
+    },
+    {
+      "prefix_prefix": "ENVO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/ENVO_"
+    },
+    {
+      "prefix_prefix": "SIO",
+      "prefix_reference": "http://semanticscience.org/resource/"
+    },
+    {
+      "prefix_prefix": "nmdc",
+      "prefix_reference": "https://w3id.org/nmdc/"
+    },
+    {
+      "prefix_prefix": "KBase",
+      "prefix_reference": "https://kbase.us/"
     }
   ],
   "default_prefix": "linkml_tutorial_2024",
@@ -350,241 +370,295 @@
   ],
   "enums": [
     {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/PersonStatus",
+      "name": "BiomeTypeEnum",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum",
+      "description": "The type of biome.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "permissible_values": [
         {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
+          "text": "forest",
+          "meaning": "ENVO:00000111"
         },
         {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
+          "text": "lake",
+          "meaning": "ENVO:00000020"
         },
         {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
+          "text": "ocean",
+          "meaning": "ENVO:00000015"
+        },
+        {
+          "text": "desert",
+          "meaning": "ENVO:01001357"
+        },
+        {
+          "text": "air",
+          "meaning": "ENVO:00002005"
         }
       ]
+    },
+    {
+      "name": "SpeciesEnum",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SpeciesEnum",
+      "description": "The species of micro organisms collected in the sample.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "reachable_from": {
+        "source_ontology": "obo:ncbitaxon",
+        "source_nodes": [
+          "NCBITaxon:131567"
+        ],
+        "relationship_types": [
+          "rdfs:subClassOf"
+        ]
+      }
     }
   ],
   "slots": [
     {
       "name": "id",
       "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
-      "description": "A unique identifier for a thing",
+      "description": "The unique identifier for the biosample.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "mappings": [
-        "http://schema.org/identifier"
-      ],
-      "slot_uri": "http://schema.org/identifier",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
       "identifier": true,
-      "owner": "NamedThing",
+      "owner": "Sample",
       "domain_of": [
-        "NamedThing"
+        "SampleCollection",
+        "Sample"
       ],
-      "range": "uriorcurie",
+      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "name",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/name",
-      "description": "A human-readable name for a thing",
+      "name": "altitude",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/altitude",
+      "description": "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/altitude",
+      "owner": "AirSample",
+      "domain_of": [
+        "AirSample"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "latitude",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/latitude",
+      "description": "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "mappings": [
-        "http://schema.org/name"
+        "http://schema.org/latitude"
       ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
+      "slot_uri": "http://schema.org/latitude",
+      "owner": "Sample",
       "domain_of": [
-        "NamedThing"
+        "Sample"
       ],
-      "range": "string",
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
-      "name": "description",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/description",
-      "description": "A human-readable description for a thing",
+      "name": "longitude",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/longitude",
+      "description": "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "mappings": [
-        "http://schema.org/description"
+        "http://schema.org/longitude"
       ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
+      "slot_uri": "http://schema.org/longitude",
+      "owner": "Sample",
       "domain_of": [
-        "NamedThing"
+        "Sample"
       ],
-      "range": "string",
+      "range": "float",
       "@type": "SlotDefinition"
     },
     {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/primary_email",
-      "description": "The main email address of a person",
+      "name": "species",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/species",
+      "description": "The species of micro organisms collected in the sample.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/birth_date",
-      "description": "Date on which a person is born",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/age_in_years",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/vital_status",
-      "owner": "Person",
-      "domain_of": [
-        "Person"
-      ],
-      "range": "PersonStatus",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "personCollection__entries",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/entries",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/species",
       "multivalued": true,
-      "alias": "entries",
-      "owner": "PersonCollection",
+      "owner": "Sample",
       "domain_of": [
-        "PersonCollection"
+        "Sample"
       ],
-      "range": "Person",
-      "inlined": true,
+      "range": "SpeciesEnum",
       "@type": "SlotDefinition"
     },
     {
-      "name": "Person_primary_email",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/primary_email",
-      "description": "The main email address of a person",
+      "name": "depth",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/depth",
+      "description": "The depth in centimeters of the biosample.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "is_a": "primary_email",
-      "domain": "Person",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "Person",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/depth",
+      "owner": "SoilSample",
       "domain_of": [
-        "Person"
+        "SoilSample"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "sample_biome",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/sample_biome",
+      "description": "The biome type of the biosample",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/sample_biome",
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "BiomeTypeEnum",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "samples",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/samples",
+      "description": "The samples in the collection.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/samples",
+      "multivalued": true,
+      "owner": "SampleCollection",
+      "domain_of": [
+        "SampleCollection"
+      ],
+      "range": "Sample",
+      "inlined": true,
+      "inlined_as_list": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Air_Sample_id",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
+      "description": "The unique identifier for the biosample.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "is_a": "id",
+      "domain": "AirSample",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "AirSample",
+      "domain_of": [
+        "AirSample"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
+      "usage_slot_name": "id",
       "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "required": true,
+      "pattern": "^airsample:\\d*",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Soil_Sample_id",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
+      "description": "The unique identifier for the biosample.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "is_a": "id",
+      "domain": "SoilSample",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "SoilSample",
+      "domain_of": [
+        "SoilSample"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "string",
+      "required": true,
+      "pattern": "^soilsample:\\d*",
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
+      "name": "SampleCollection",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SampleCollection",
+      "description": "A collection of samples.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "mappings": [
-        "schema:Thing"
-      ],
       "slots": [
         "id",
-        "name",
-        "description"
+        "samples"
       ],
       "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Person",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/Person",
-      "description": "Represents a Person",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "Person_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/Person",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "PersonCollection",
-      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/PersonCollection",
-      "description": "A holder for Person objects",
-      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
-      "slots": [
-        "personCollection__entries"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "entries",
-          "multivalued": true,
-          "range": "Person",
-          "inlined": true,
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/PersonCollection",
+      "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SampleCollection",
       "tree_root": true,
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Sample",
+      "id_prefixes": [
+        "KBase",
+        "nmdc"
+      ],
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/Sample",
+      "description": "A sample is a limited quantity of something (e.g. an individual or set of individuals from a population,  or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration,  or trial use.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "aliases": [
+        "Biosample",
+        "Environmental Sample"
+      ],
+      "mappings": [
+        "SIO:001050"
+      ],
+      "exact_mappings": [
+        "SIO:001050"
+      ],
+      "slots": [
+        "id",
+        "latitude",
+        "longitude",
+        "species",
+        "sample_biome"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://semanticscience.org/resource/001050",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "AirSample",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/AirSample",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "is_a": "Sample",
+      "slots": [
+        "latitude",
+        "longitude",
+        "species",
+        "sample_biome",
+        "altitude",
+        "Air_Sample_id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/AirSample",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SoilSample",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SoilSample",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "is_a": "Sample",
+      "slots": [
+        "latitude",
+        "longitude",
+        "species",
+        "sample_biome",
+        "depth",
+        "Soil_Sample_id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SoilSample",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_tutorial_2024.yaml",
-  "source_file_date": "2024-06-24T16:27:37",
-  "source_file_size": 2251,
-  "generation_date": "2024-06-24T16:28:14",
+  "source_file_date": "2024-06-26T09:28:33",
+  "source_file_size": 3956,
+  "generation_date": "2024-06-26T09:28:36",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_tutorial_2024.context.jsonld",

@@ -1,11 +1,16 @@
 {
+   "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
+   "KBase": "https://kbase.us/",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "SIO": "http://semanticscience.org/resource/",
    "biolink": "https://w3id.org/biolink/",
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "linkml_tutorial_2024": "https://w3id.org/linkml/linkml-tutorial-2024/",
+   "nmdc": "https://w3id.org/nmdc/",
+   "obo": "http://purl.obolibrary.org/obo/",
    "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
+   "Sample": {
+      "@id": "SIO:001050"
    }
 }

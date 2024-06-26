@@ -1,24 +1,36 @@
 # metamodel_version: 1.7.0
-type NamedThing
+type AirSample
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+    latitude: Float
+    longitude: Float
+    species: [SpeciesEnum]
+    sampleBiome: BiomeTypeEnum
+    altitude: Float
+    id: String!
   }
 
-type Person
+type Sample
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    id: String!
+    latitude: Float
+    longitude: Float
+    species: [SpeciesEnum]
+    sampleBiome: BiomeTypeEnum
   }
 
-type PersonCollection
+type SampleCollection
   {
-    entries: [Person]
+    id: String!
+    samples: [Sample]
+  }
+
+type SoilSample
+  {
+    latitude: Float
+    longitude: Float
+    species: [SpeciesEnum]
+    sampleBiome: BiomeTypeEnum
+    depth: Float
+    id: String!
   }
 

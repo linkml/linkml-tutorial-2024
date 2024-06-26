@@ -4,6 +4,8 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
+PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
+PREFIX SIO: <http://semanticscience.org/resource/>
 
 
 linkml:String xsd:string
@@ -44,32 +46,39 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<Person>
-)
-
-<Person> CLOSED {
-    (  $<Person_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/linkml/linkml-tutorial-2024/PersonStatus#UNKNOWN> ] ?
+<AirSample> CLOSED {
+    (  $<AirSample_tes> (  &<Sample_tes> ;
+          rdf:type [ SIO:001050 ] ? ;
+          <altitude> @linkml:Float ?
        ) ;
-       rdf:type [ <Person> ]
+       rdf:type [ <AirSample> ]
     )
 }
 
-<PersonCollection> CLOSED {
-    (  $<PersonCollection_tes> <entries> @<Person> * ;
-       rdf:type [ <PersonCollection> ] ?
+<Sample>  (
+    CLOSED {
+       (  $<Sample_tes> (  schema1:latitude @linkml:Float ? ;
+             schema1:longitude @linkml:Float ? ;
+             <species> . * ;
+             <sample_biome> [ ENVO:00000111 ENVO:00000020 ENVO:00000015 ENVO:01001357 ENVO:00002005 ] ?
+          ) ;
+          rdf:type [ SIO:001050 ]
+       )
+    } OR @<AirSample> OR @<SoilSample>
+)
+
+<SampleCollection> CLOSED {
+    (  $<SampleCollection_tes> <samples> @<Sample> * ;
+       rdf:type [ <SampleCollection> ]
+    )
+}
+
+<SoilSample> CLOSED {
+    (  $<SoilSample_tes> (  &<Sample_tes> ;
+          rdf:type [ SIO:001050 ] ? ;
+          <depth> @linkml:Float ?
+       ) ;
+       rdf:type [ <SoilSample> ]
     )
 }
 
