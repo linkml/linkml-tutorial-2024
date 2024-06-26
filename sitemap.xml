@@ -2,172 +2,187 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/AirSample/</loc>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/BiomeTypeEnum/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Boolean/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Curie/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Date/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/DateOrDatetime/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Datetime/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Decimal/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Double/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Float/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Integer/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Jsonpath/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Jsonpointer/</loc>
-         <lastmod>2024-06-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/NamedThing/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Ncname/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Nodeidentifier/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Objectidentifier/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/Person/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/Sample/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/PersonCollection/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/SampleCollection/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/PersonStatus/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/SoilSample/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Sparqlpath/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/SpeciesEnum/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/String/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Time/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Uri/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/Uriorcurie/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/about/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/age_in_years/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/altitude/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/birth_date/</loc>
-         <lastmod>2024-06-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/description/</loc>
-         <lastmod>2024-06-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/entries/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/depth/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/id/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/latitude/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://linkml.github.io/linkml-tutorial-2024/linkml-tutorial-2024/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/name/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/longitude/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/primary_email/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/sample_biome/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://linkml.github.io/linkml-tutorial-2024/vital_status/</loc>
-         <lastmod>2024-06-24</lastmod>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/sample_type/</loc>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/samples/</loc>
+         <lastmod>2024-06-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://linkml.github.io/linkml-tutorial-2024/species/</loc>
+         <lastmod>2024-06-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://linkml.github.io/linkml-tutorial-2024/PersonCollection/" rel="canonical"/>
+<link href="https://linkml.github.io/linkml-tutorial-2024/Sample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: PersonCollection - linkml-tutorial-2024</title>
+<title>Class: Sample - linkml-tutorial-2024</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-personcollection">
+<a class="md-skip" href="#class-sample">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: PersonCollection
+              Class: Sample
             
           </span>
 </div>
@@ -142,8 +142,23 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+    Inheritance
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
     Slots
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+    Usages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+    Aliases
   </a>
 </li>
 <li class="md-nav__item">
@@ -152,6 +167,11 @@
   </a>
 <nav aria-label="Identifier and Mapping Information" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#valid-id-prefixes">
+    Valid ID Prefixes
+  </a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#schema-source">
     Schema Source
@@ -191,27 +211,56 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/PersonCollection.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/Sample.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-personcollection">Class: PersonCollection</h1>
-<p><em>A holder for Person objects</em></p>
-<p>URI: <a href="https://w3id.org/linkml/linkml-tutorial-2024/PersonCollection">linkml_tutorial_2024:PersonCollection</a></p>
+<h1 id="class-sample">Class: Sample</h1>
+<p><em>A sample is a limited quantity of something (e.g. an individual or set of individuals from a population,  or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration,  or trial use.</em></p>
+<p>URI: <a href="http://semanticscience.org/resource/001050">SIO:001050</a></p>
 <div class="mermaid"> classDiagram
-    class PersonCollection
-    click PersonCollection href "../PersonCollection"
-      PersonCollection : entries
+    class Sample
+    click Sample href "../Sample"
+      Sample &lt;|-- AirSample
+        click AirSample href "../AirSample"
+      Sample &lt;|-- SoilSample
+        click SoilSample href "../SoilSample"
+
+      Sample : id
+
+      Sample : latitude
+
+      Sample : longitude
+
+      Sample : sample_biome
 
 
 
 
-    PersonCollection --&gt; "*" Person : entries
-    click Person href "../Person"
+    Sample --&gt; "0..1" BiomeTypeEnum : sample_biome
+    click BiomeTypeEnum href "../BiomeTypeEnum"
+
+
+      Sample : sample_type
+
+      Sample : species
+
+
+
+
+    Sample --&gt; "*" SpeciesEnum : species
+    click SpeciesEnum href "../SpeciesEnum"
 
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><strong>Sample</strong><ul>
+<li><a href="../AirSample/">AirSample</a></li>
+<li><a href="../SoilSample/">SoilSample</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -224,14 +273,78 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../entries/">entries</a></td>
-<td>* <br/> <a href="../Person/">Person</a></td>
-<td></td>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The unique identifier for the biosample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../latitude/">latitude</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Latitude is a geographic coordinate which refers to the angle from a point on...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../longitude/">longitude</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Longitude is a geographic position that refers to the angle east or west of a...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../species/">species</a></td>
+<td>* <br/> <a href="../SpeciesEnum/">SpeciesEnum</a></td>
+<td>The species of micro organisms collected in the sample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_biome/">sample_biome</a></td>
+<td>0..1 <br/> <a href="../BiomeTypeEnum/">BiomeTypeEnum</a></td>
+<td>The biome type of the biosample</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sample_type/">sample_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The type of sample</td>
 <td>direct</td>
 </tr>
 </tbody>
 </table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SampleCollection/">SampleCollection</a></td>
+<td><a href="../samples/">samples</a></td>
+<td>range</td>
+<td><a href="./">Sample</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>Biosample</li>
+<li>Environmental Sample</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="valid-id-prefixes">Valid ID Prefixes</h3>
+<p>Instances of this class <em>should</em> have identifiers with one of the following prefixes:</p>
+<ul>
+<li>
+<p>KBase</p>
+</li>
+<li>
+<p>nmdc</p>
+</li>
+</ul>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://w3id.org/linkml/linkml-tutorial-2024</li>
@@ -247,11 +360,15 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>linkml_tutorial_2024:PersonCollection</td>
+<td>SIO:001050</td>
 </tr>
 <tr>
 <td>native</td>
-<td>linkml_tutorial_2024:PersonCollection</td>
+<td>linkml_tutorial_2024:Sample</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>SIO:001050</td>
 </tr>
 </tbody>
 </table>
@@ -259,41 +376,116 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: PersonCollection
-description: A holder for Person objects
+<pre><code class="language-yaml">name: Sample
+id_prefixes:
+- KBase
+- nmdc
+description: A sample is a limited quantity of something (e.g. an individual or set
+  of individuals from a population,  or a portion of a substance) to be used for testing,
+  analysis, inspection, investigation, demonstration,  or trial use.
 from_schema: https://w3id.org/linkml/linkml-tutorial-2024
-attributes:
-  entries:
-    name: entries
-    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
-    rank: 1000
-    multivalued: true
-    domain_of:
-    - PersonCollection
-    range: Person
-    inlined: true
-tree_root: true
+aliases:
+- Biosample
+- Environmental Sample
+exact_mappings:
+- SIO:001050
+slots:
+- id
+- latitude
+- longitude
+- species
+- sample_biome
+- sample_type
+class_uri: SIO:001050
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: PersonCollection
-description: A holder for Person objects
+<pre><code class="language-yaml">name: Sample
+id_prefixes:
+- KBase
+- nmdc
+description: A sample is a limited quantity of something (e.g. an individual or set
+  of individuals from a population,  or a portion of a substance) to be used for testing,
+  analysis, inspection, investigation, demonstration,  or trial use.
 from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+aliases:
+- Biosample
+- Environmental Sample
+exact_mappings:
+- SIO:001050
 attributes:
-  entries:
-    name: entries
+  id:
+    name: id
+    description: The unique identifier for the biosample.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+    required: true
+  latitude:
+    name: latitude
+    description: Latitude is a geographic coordinate which refers to the angle from
+      a point on the Earth's surface to the  equatorial plane.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    slot_uri: schema:latitude
+    alias: latitude
+    owner: Sample
+    domain_of:
+    - Sample
+    range: float
+  longitude:
+    name: longitude
+    description: Longitude is a geographic position that refers to the angle east
+      or west of a reference meridian between the  two geographical poles to another
+      meridian that passes through an arbitrary point.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    slot_uri: schema:longitude
+    alias: longitude
+    owner: Sample
+    domain_of:
+    - Sample
+    range: float
+  species:
+    name: species
+    description: The species of micro organisms collected in the sample.
     from_schema: https://w3id.org/linkml/linkml-tutorial-2024
     rank: 1000
     multivalued: true
-    alias: entries
-    owner: PersonCollection
+    alias: species
+    owner: Sample
     domain_of:
-    - PersonCollection
-    range: Person
-    inlined: true
-tree_root: true
+    - Sample
+    range: SpeciesEnum
+  sample_biome:
+    name: sample_biome
+    description: The biome type of the biosample
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    alias: sample_biome
+    owner: Sample
+    domain_of:
+    - Sample
+    range: BiomeTypeEnum
+  sample_type:
+    name: sample_type
+    description: The type of sample.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    designates_type: true
+    alias: sample_type
+    owner: Sample
+    domain_of:
+    - Sample
+    range: string
+class_uri: SIO:001050
 
 </code></pre>
 </details>

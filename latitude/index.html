@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://linkml.github.io/linkml-tutorial-2024/birth_date/">
+        <link rel="canonical" href="https://linkml.github.io/linkml-tutorial-2024/latitude/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: birth_date - linkml-tutorial-2024</title>
+        <title>Slot: latitude - linkml-tutorial-2024</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-birth_date" class="md-skip">
+        <a href="#slot-latitude" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: birth_date
+              Slot: latitude
             
           </span>
         </div>
@@ -310,15 +310,15 @@
                 
                   
 
-  <a href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/birth_date.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/latitude.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-birth_date">Slot: birth_date</h1>
-<p><em>Date on which a person is born</em></p>
-<p>URI: <a href="http://schema.org/birthDate">schema:birthDate</a></p>
+<h1 id="slot-latitude">Slot: latitude</h1>
+<p><em>Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.</em></p>
+<p>URI: <a href="http://schema.org/latitude">schema:latitude</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -332,15 +332,25 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Person/">Person</a></td>
-<td>Represents a Person</td>
+<td><a href="../Sample/">Sample</a></td>
+<td>A sample is a limited quantity of something (e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SoilSample/">SoilSample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AirSample/">AirSample</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Date/">Date</a></li>
+<li>Range: <a href="../Float/">Float</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -350,15 +360,16 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: birth_date
-description: Date on which a person is born
+<pre><code class="language-yaml">name: latitude
+description: Latitude is a geographic coordinate which refers to the angle from a
+  point on the Earth's surface to the  equatorial plane.
 from_schema: https://w3id.org/linkml/linkml-tutorial-2024
 rank: 1000
-slot_uri: schema:birthDate
-alias: birth_date
+slot_uri: schema:latitude
+alias: latitude
 domain_of:
-- Person
-range: date
+- Sample
+range: float
 
 </code></pre>
 

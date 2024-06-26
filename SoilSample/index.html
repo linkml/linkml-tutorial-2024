@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://linkml.github.io/linkml-tutorial-2024/NamedThing/" rel="canonical"/>
+<link href="https://linkml.github.io/linkml-tutorial-2024/SoilSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-8.5.10" name="generator"/>
-<title>Class: NamedThing - linkml-tutorial-2024</title>
+<title>Class: SoilSample - linkml-tutorial-2024</title>
 <link href="../assets/stylesheets/main.975780f9.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.2505c338.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -21,7 +21,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-namedthing">
+<a class="md-skip" href="#class-soilsample">
           Skip to content
         </a>
 </div>
@@ -45,7 +45,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: NamedThing
+              Class: SoilSample
             
           </span>
 </div>
@@ -196,30 +196,51 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/NamedThing.md" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/linkml/linkml-tutorial-2024/edit/master/docs/SoilSample.md" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
-<h1 id="class-namedthing">Class: NamedThing</h1>
-<p><em>A generic grouping for any identifiable entity</em></p>
-<p>URI: <a href="http://schema.org/Thing">schema:Thing</a></p>
+<h1 id="class-soilsample">Class: SoilSample</h1>
+<p>URI: <a href="https://w3id.org/linkml/linkml-tutorial-2024/SoilSample">linkml_tutorial_2024:SoilSample</a></p>
 <div class="mermaid"> classDiagram
-    class NamedThing
-    click NamedThing href "../NamedThing"
-      NamedThing &lt;|-- Person
-        click Person href "../Person"
+    class SoilSample
+    click SoilSample href "../SoilSample"
+      Sample &lt;|-- SoilSample
+        click Sample href "../Sample"
 
-      NamedThing : description
+      SoilSample : depth
 
-      NamedThing : id
+      SoilSample : id
 
-      NamedThing : name
+      SoilSample : latitude
+
+      SoilSample : longitude
+
+      SoilSample : sample_biome
+
+
+
+
+    SoilSample --&gt; "0..1" BiomeTypeEnum : sample_biome
+    click BiomeTypeEnum href "../BiomeTypeEnum"
+
+
+      SoilSample : sample_type
+
+      SoilSample : species
+
+
+
+
+    SoilSample --&gt; "*" SpeciesEnum : species
+    click SpeciesEnum href "../SpeciesEnum"
+
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>NamedThing</strong><ul>
-<li><a href="../Person/">Person</a></li>
+<li><a href="../Sample/">Sample</a><ul>
+<li><strong>SoilSample</strong></li>
 </ul>
 </li>
 </ul>
@@ -235,22 +256,46 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../depth/">depth</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The depth in centimeters of the biosample</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
-<td>direct</td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The unique identifier for the biosample</td>
+<td><a href="../Sample/">Sample</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable name for a thing</td>
-<td>direct</td>
+<td><a href="../latitude/">latitude</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Latitude is a geographic coordinate which refers to the angle from a point on...</td>
+<td><a href="../Sample/">Sample</a></td>
 </tr>
 <tr>
-<td><a href="../description/">description</a></td>
+<td><a href="../longitude/">longitude</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Longitude is a geographic position that refers to the angle east or west of a...</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../species/">species</a></td>
+<td>* <br/> <a href="../SpeciesEnum/">SpeciesEnum</a></td>
+<td>The species of micro organisms collected in the sample</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../sample_biome/">sample_biome</a></td>
+<td>0..1 <br/> <a href="../BiomeTypeEnum/">BiomeTypeEnum</a></td>
+<td>The biome type of the biosample</td>
+<td><a href="../Sample/">Sample</a></td>
+</tr>
+<tr>
+<td><a href="../sample_type/">sample_type</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable description for a thing</td>
-<td>direct</td>
+<td>The type of sample</td>
+<td><a href="../Sample/">Sample</a></td>
 </tr>
 </tbody>
 </table>
@@ -270,11 +315,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>schema:Thing</td>
+<td>linkml_tutorial_2024:SoilSample</td>
 </tr>
 <tr>
 <td>native</td>
-<td>linkml_tutorial_2024:NamedThing</td>
+<td>linkml_tutorial_2024:SoilSample</td>
 </tr>
 </tbody>
 </table>
@@ -282,58 +327,112 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: NamedThing
-description: A generic grouping for any identifiable entity
+<pre><code class="language-yaml">name: SoilSample
 from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+is_a: Sample
 slots:
-- id
-- name
-- description
-class_uri: schema:Thing
+- depth
+slot_usage:
+  id:
+    name: id
+    domain_of:
+    - Sample
+    pattern: ^soilsample:\d*
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: NamedThing
-description: A generic grouping for any identifiable entity
+<pre><code class="language-yaml">name: SoilSample
 from_schema: https://w3id.org/linkml/linkml-tutorial-2024
-attributes:
+is_a: Sample
+slot_usage:
   id:
     name: id
-    description: A unique identifier for a thing
+    domain_of:
+    - Sample
+    pattern: ^soilsample:\d*
+attributes:
+  depth:
+    name: depth
+    description: The depth in centimeters of the biosample.
     from_schema: https://w3id.org/linkml/linkml-tutorial-2024
     rank: 1000
-    slot_uri: schema:identifier
+    alias: depth
+    owner: SoilSample
+    domain_of:
+    - SoilSample
+    range: integer
+  id:
+    name: id
+    description: The unique identifier for the biosample.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
     identifier: true
     alias: id
-    owner: NamedThing
+    owner: SoilSample
     domain_of:
-    - NamedThing
-    range: uriorcurie
-  name:
-    name: name
-    description: A human-readable name for a thing
+    - Sample
+    range: string
+    required: true
+    pattern: ^soilsample:\d*
+  latitude:
+    name: latitude
+    description: Latitude is a geographic coordinate which refers to the angle from
+      a point on the Earth's surface to the  equatorial plane.
     from_schema: https://w3id.org/linkml/linkml-tutorial-2024
     rank: 1000
-    slot_uri: schema:name
-    alias: name
-    owner: NamedThing
+    slot_uri: schema:latitude
+    alias: latitude
+    owner: SoilSample
     domain_of:
-    - NamedThing
-    range: string
-  description:
-    name: description
-    description: A human-readable description for a thing
+    - Sample
+    range: float
+  longitude:
+    name: longitude
+    description: Longitude is a geographic position that refers to the angle east
+      or west of a reference meridian between the  two geographical poles to another
+      meridian that passes through an arbitrary point.
     from_schema: https://w3id.org/linkml/linkml-tutorial-2024
     rank: 1000
-    slot_uri: schema:description
-    alias: description
-    owner: NamedThing
+    slot_uri: schema:longitude
+    alias: longitude
+    owner: SoilSample
     domain_of:
-    - NamedThing
+    - Sample
+    range: float
+  species:
+    name: species
+    description: The species of micro organisms collected in the sample.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    multivalued: true
+    alias: species
+    owner: SoilSample
+    domain_of:
+    - Sample
+    range: SpeciesEnum
+  sample_biome:
+    name: sample_biome
+    description: The biome type of the biosample
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    alias: sample_biome
+    owner: SoilSample
+    domain_of:
+    - Sample
+    range: BiomeTypeEnum
+  sample_type:
+    name: sample_type
+    description: The type of sample.
+    from_schema: https://w3id.org/linkml/linkml-tutorial-2024
+    rank: 1000
+    designates_type: true
+    alias: sample_type
+    owner: SoilSample
+    domain_of:
+    - Sample
     range: string
-class_uri: schema:Thing
 
 </code></pre>
 </details>
