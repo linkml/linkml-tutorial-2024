@@ -5,6 +5,7 @@ type AirSample
     longitude: Float
     species: [SpeciesEnum]
     sampleBiome: BiomeTypeEnum
+    sampleType: String
     altitude: Float
     id: String!
   }
@@ -16,11 +17,11 @@ type Sample
     longitude: Float
     species: [SpeciesEnum]
     sampleBiome: BiomeTypeEnum
+    sampleType: String
   }
 
 type SampleCollection
   {
-    id: String!
     samples: [Sample]
   }
 
@@ -30,7 +31,8 @@ type SoilSample
     longitude: Float
     species: [SpeciesEnum]
     sampleBiome: BiomeTypeEnum
-    depth: Float
+    sampleType: String
+    depth: Integer
     id: String!
   }
 

@@ -25,6 +25,13 @@
                     "$ref": "#/$defs/BiomeTypeEnum",
                     "description": "The biome type of the biosample"
                 },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "AirSample"
+                    ],
+                    "type": "string"
+                },
                 "species": {
                     "description": "The species of micro organisms collected in the sample.",
                     "items": {
@@ -36,6 +43,50 @@
             "required": [
                 "id"
             ],
+            "title": "AirSample",
+            "type": "object"
+        },
+        "AirSample__identifier_optional": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "altitude": {
+                    "description": "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.",
+                    "type": "number"
+                },
+                "id": {
+                    "description": "The unique identifier for the biosample.",
+                    "pattern": "^airsample:\\d*",
+                    "type": "string"
+                },
+                "latitude": {
+                    "description": "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point.",
+                    "type": "number"
+                },
+                "sample_biome": {
+                    "$ref": "#/$defs/BiomeTypeEnum",
+                    "description": "The biome type of the biosample"
+                },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "AirSample"
+                    ],
+                    "type": "string"
+                },
+                "species": {
+                    "description": "The species of micro organisms collected in the sample.",
+                    "items": {
+                        "$ref": "#/$defs/SpeciesEnum"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [],
             "title": "AirSample",
             "type": "object"
         },
@@ -71,6 +122,13 @@
                     "$ref": "#/$defs/BiomeTypeEnum",
                     "description": "The biome type of the biosample"
                 },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "Sample"
+                    ],
+                    "type": "string"
+                },
                 "species": {
                     "description": "The species of micro organisms collected in the sample.",
                     "items": {
@@ -89,22 +147,71 @@
             "additionalProperties": false,
             "description": "A collection of samples.",
             "properties": {
+                "samples": {
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/$defs/Sample__identifier_optional"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/AirSample__identifier_optional"
+                                    },
+                                    {
+                                        "$ref": "#/$defs/SoilSample__identifier_optional"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "description": "The samples in the collection.",
+                    "type": "object"
+                }
+            },
+            "title": "SampleCollection",
+            "type": "object"
+        },
+        "Sample__identifier_optional": {
+            "additionalProperties": false,
+            "description": "A sample is a limited quantity of something (e.g. an individual or set of individuals from a population,  or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration,  or trial use.",
+            "properties": {
                 "id": {
                     "description": "The unique identifier for the biosample.",
                     "type": "string"
                 },
-                "samples": {
-                    "description": "The samples in the collection.",
+                "latitude": {
+                    "description": "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point.",
+                    "type": "number"
+                },
+                "sample_biome": {
+                    "$ref": "#/$defs/BiomeTypeEnum",
+                    "description": "The biome type of the biosample"
+                },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "Sample"
+                    ],
+                    "type": "string"
+                },
+                "species": {
+                    "description": "The species of micro organisms collected in the sample.",
                     "items": {
-                        "$ref": "#/$defs/Sample"
+                        "$ref": "#/$defs/SpeciesEnum"
                     },
                     "type": "array"
                 }
             },
-            "required": [
-                "id"
-            ],
-            "title": "SampleCollection",
+            "required": [],
+            "title": "Sample",
             "type": "object"
         },
         "SoilSample": {
@@ -113,7 +220,7 @@
             "properties": {
                 "depth": {
                     "description": "The depth in centimeters of the biosample.",
-                    "type": "number"
+                    "type": "integer"
                 },
                 "id": {
                     "description": "The unique identifier for the biosample.",
@@ -132,6 +239,13 @@
                     "$ref": "#/$defs/BiomeTypeEnum",
                     "description": "The biome type of the biosample"
                 },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "SoilSample"
+                    ],
+                    "type": "string"
+                },
                 "species": {
                     "description": "The species of micro organisms collected in the sample.",
                     "items": {
@@ -143,6 +257,50 @@
             "required": [
                 "id"
             ],
+            "title": "SoilSample",
+            "type": "object"
+        },
+        "SoilSample__identifier_optional": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "depth": {
+                    "description": "The depth in centimeters of the biosample.",
+                    "type": "integer"
+                },
+                "id": {
+                    "description": "The unique identifier for the biosample.",
+                    "pattern": "^soilsample:\\d*",
+                    "type": "string"
+                },
+                "latitude": {
+                    "description": "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point.",
+                    "type": "number"
+                },
+                "sample_biome": {
+                    "$ref": "#/$defs/BiomeTypeEnum",
+                    "description": "The biome type of the biosample"
+                },
+                "sample_type": {
+                    "description": "The type of sample.",
+                    "enum": [
+                        "SoilSample"
+                    ],
+                    "type": "string"
+                },
+                "species": {
+                    "description": "The species of micro organisms collected in the sample.",
+                    "items": {
+                        "$ref": "#/$defs/SpeciesEnum"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [],
             "title": "SoilSample",
             "type": "object"
         },
@@ -158,21 +316,31 @@
     "description": "A collection of samples.",
     "metamodel_version": "1.7.0",
     "properties": {
-        "id": {
-            "description": "The unique identifier for the biosample.",
-            "type": "string"
-        },
         "samples": {
-            "description": "The samples in the collection.",
-            "items": {
-                "$ref": "#/$defs/Sample"
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/Sample__identifier_optional"
+                            },
+                            {
+                                "$ref": "#/$defs/AirSample__identifier_optional"
+                            },
+                            {
+                                "$ref": "#/$defs/SoilSample__identifier_optional"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "null"
+                    }
+                ]
             },
-            "type": "array"
+            "description": "The samples in the collection.",
+            "type": "object"
         }
     },
-    "required": [
-        "id"
-    ],
     "title": "linkml-tutorial-2024",
     "type": "object",
     "version": null

@@ -4,7 +4,6 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX schema1: <http://schema.org/>
-PREFIX ENVO: <http://purl.obolibrary.org/obo/ENVO_>
 PREFIX SIO: <http://semanticscience.org/resource/>
 
 
@@ -60,7 +59,12 @@ linkml:Sparqlpath xsd:string
        (  $<Sample_tes> (  schema1:latitude @linkml:Float ? ;
              schema1:longitude @linkml:Float ? ;
              <species> . * ;
-             <sample_biome> [ ENVO:00000111 ENVO:00000020 ENVO:00000015 ENVO:01001357 ENVO:00002005 ] ?
+             <sample_biome> [ <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#forest>
+                <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#lake>
+                <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#ocean>
+                <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#desert>
+                <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#air> ] ? ;
+             <sample_type> @linkml:String ?
           ) ;
           rdf:type [ SIO:001050 ]
        )
@@ -69,14 +73,14 @@ linkml:Sparqlpath xsd:string
 
 <SampleCollection> CLOSED {
     (  $<SampleCollection_tes> <samples> @<Sample> * ;
-       rdf:type [ <SampleCollection> ]
+       rdf:type [ <SampleCollection> ] ?
     )
 }
 
 <SoilSample> CLOSED {
     (  $<SoilSample_tes> (  &<Sample_tes> ;
           rdf:type [ SIO:001050 ] ? ;
-          <depth> @linkml:Float ?
+          <depth> @linkml:Integer ?
        ) ;
        rdf:type [ <SoilSample> ]
     )

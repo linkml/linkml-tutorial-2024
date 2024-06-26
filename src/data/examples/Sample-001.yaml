@@ -1,0 +1,27 @@
+# Example data object
+---
+samples:
+  - id: "soilsample:002"
+    latitude: 40.7128
+    longitude: -74.0060
+    species:
+      - NCBITaxon:1423     # Bacillus subtilis
+    sample_biome: desert
+    depth: 15
+    sample_type: SoilSample
+  - id: "soilsample:003"
+    latitude: 51.5074
+    longitude: -0.1278
+    species:
+      - NCBITaxon:287      # Pseudomonas aeruginosa
+    sample_biome: forest
+    depth: 30
+    sample_type: SoilSample
+  - id: "airsample:004"
+    latitude: 51.5074
+    longitude: -0.1278
+    species:
+      - NCBITaxon:287      # Pseudomonas aeruginosa
+    sample_biome: air
+    altitude: 30
+    sample_type: AirSample

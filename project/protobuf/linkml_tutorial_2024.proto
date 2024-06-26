@@ -7,6 +7,7 @@ message AirSample
   float longitude = 0
  repeated  speciesEnum species = 0
   biomeTypeEnum sampleBiome = 0
+  string sampleType = 0
   float altitude = 0
   string id = 0
  }
@@ -18,11 +19,11 @@ message Sample
   float longitude = 0
  repeated  speciesEnum species = 0
   biomeTypeEnum sampleBiome = 0
+  string sampleType = 0
  }
 // A collection of samples.
 message SampleCollection
  {
-  string id = 0
  repeated  sample samples = 0
  }
 message SoilSample
@@ -31,6 +32,7 @@ message SoilSample
   float longitude = 0
  repeated  speciesEnum species = 0
   biomeTypeEnum sampleBiome = 0
-  float depth = 0
+  string sampleType = 0
+  integer depth = 0
   string id = 0
  }

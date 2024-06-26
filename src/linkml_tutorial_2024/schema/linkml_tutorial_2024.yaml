@@ -32,7 +32,6 @@ classes:
     description: >-
       A collection of samples.
     slots:
-      - id
       - samples
     tree_root: true
 
@@ -47,7 +46,8 @@ classes:
       - latitude
       - longitude
       - species
-      - sample biome
+      - sample_biome
+      - sample_type
     id_prefixes:
       - KBase
       - nmdc
@@ -55,7 +55,7 @@ classes:
       - SIO:001050
     class_uri: SIO:001050
 
-  Air Sample:
+  AirSample:
     is_a: Sample
     slots:
       - altitude
@@ -64,7 +64,7 @@ classes:
         pattern: '^airsample:\d*'   ## regular expression for the id
 
 
-  Soil Sample:
+  SoilSample:
     is_a: Sample
     slots:
       - depth
@@ -103,8 +103,8 @@ slots:
     depth:
         description: >-
           The depth in centimeters of the biosample.
-        range: float
-    sample biome:
+        range: integer
+    sample_biome:
         description: >-
           The biome type of the biosample
         range: BiomeTypeEnum
@@ -113,8 +113,11 @@ slots:
           The samples in the collection.
         range: Sample
         multivalued: true
-        inlined_as_list: true
         inlined: true
+    sample_type:
+      designates_type: true
+      description: >-
+          The type of sample.
 
 enums:
     BiomeTypeEnum:
@@ -122,15 +125,10 @@ enums:
           The type of biome.
         permissible_values:
           forest:
-            meaning: ENVO:00000111
           lake:
-            meaning: ENVO:00000020
           ocean:
-            meaning: ENVO:00000015
           desert:
-            meaning: ENVO:01001357
           air:
-            meaning: ENVO:00002005
 
     SpeciesEnum:
         description: >-

@@ -376,24 +376,19 @@
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "permissible_values": [
         {
-          "text": "forest",
-          "meaning": "ENVO:00000111"
+          "text": "forest"
         },
         {
-          "text": "lake",
-          "meaning": "ENVO:00000020"
+          "text": "lake"
         },
         {
-          "text": "ocean",
-          "meaning": "ENVO:00000015"
+          "text": "ocean"
         },
         {
-          "text": "desert",
-          "meaning": "ENVO:01001357"
+          "text": "desert"
         },
         {
-          "text": "air",
-          "meaning": "ENVO:00002005"
+          "text": "air"
         }
       ]
     },
@@ -423,7 +418,6 @@
       "identifier": true,
       "owner": "Sample",
       "domain_of": [
-        "SampleCollection",
         "Sample"
       ],
       "range": "string",
@@ -499,7 +493,7 @@
       "domain_of": [
         "SoilSample"
       ],
-      "range": "float",
+      "range": "integer",
       "@type": "SlotDefinition"
     },
     {
@@ -528,11 +522,24 @@
       ],
       "range": "Sample",
       "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Air_Sample_id",
+      "name": "sample_type",
+      "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/sample_type",
+      "description": "The type of sample.",
+      "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
+      "slot_uri": "https://w3id.org/linkml/linkml-tutorial-2024/sample_type",
+      "designates_type": true,
+      "owner": "Sample",
+      "domain_of": [
+        "Sample"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AirSample_id",
       "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
       "description": "The unique identifier for the biosample.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
@@ -553,7 +560,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Soil_Sample_id",
+      "name": "SoilSample_id",
       "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/id",
       "description": "The unique identifier for the biosample.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
@@ -581,7 +588,6 @@
       "description": "A collection of samples.",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "slots": [
-        "id",
         "samples"
       ],
       "slot_usage": {},
@@ -613,7 +619,8 @@
         "latitude",
         "longitude",
         "species",
-        "sample_biome"
+        "sample_biome",
+        "sample_type"
       ],
       "slot_usage": {},
       "class_uri": "http://semanticscience.org/resource/001050",
@@ -629,8 +636,9 @@
         "longitude",
         "species",
         "sample_biome",
+        "sample_type",
         "altitude",
-        "Air_Sample_id"
+        "AirSample_id"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/AirSample",
@@ -646,8 +654,9 @@
         "longitude",
         "species",
         "sample_biome",
+        "sample_type",
         "depth",
-        "Soil_Sample_id"
+        "SoilSample_id"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SoilSample",
@@ -656,9 +665,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_tutorial_2024.yaml",
-  "source_file_date": "2024-06-26T09:28:33",
-  "source_file_size": 3956,
-  "generation_date": "2024-06-26T09:28:36",
+  "source_file_date": "2024-06-26T10:03:44",
+  "source_file_size": 3857,
+  "generation_date": "2024-06-26T10:03:46",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_tutorial_2024.context.jsonld",

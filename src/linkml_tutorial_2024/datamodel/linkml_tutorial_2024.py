@@ -1,5 +1,5 @@
 # Auto generated from linkml_tutorial_2024.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-26T09:28:36
+# Generation date: 2024-06-26T10:03:47
 # Schema: linkml-tutorial-2024
 #
 # id: https://w3id.org/linkml/linkml-tutorial-2024
@@ -22,7 +22,7 @@ from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
 from rdflib import Namespace, URIRef
 from linkml_runtime.utils.curienamespace import CurieNamespace
-from linkml_runtime.linkml_model.types import Float, String
+from linkml_runtime.linkml_model.types import Float, Integer, String
 
 metamodel_version = "1.7.0"
 version = None
@@ -48,10 +48,6 @@ DEFAULT_ = LINKML_TUTORIAL_2024
 # Types
 
 # Class references
-class SampleCollectionId(extended_str):
-    pass
-
-
 class SampleId(extended_str):
     pass
 
@@ -76,16 +72,10 @@ class SampleCollection(YAMLRoot):
     class_name: ClassVar[str] = "SampleCollection"
     class_model_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024.SampleCollection
 
-    id: Union[str, SampleCollectionId] = None
     samples: Optional[Union[Dict[Union[str, SampleId], Union[dict, "Sample"]], List[Union[dict, "Sample"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SampleCollectionId):
-            self.id = SampleCollectionId(self.id)
-
-        self._normalize_inlined_as_list(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
+        self._normalize_inlined_as_dict(slot_name="samples", slot_type=Sample, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -108,6 +98,7 @@ class Sample(YAMLRoot):
     longitude: Optional[float] = None
     species: Optional[Union[Union[str, "SpeciesEnum"], List[Union[str, "SpeciesEnum"]]]] = empty_list()
     sample_biome: Optional[Union[str, "BiomeTypeEnum"]] = None
+    sample_type: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -124,7 +115,26 @@ class Sample(YAMLRoot):
         if self.sample_biome is not None and not isinstance(self.sample_biome, BiomeTypeEnum):
             self.sample_biome = BiomeTypeEnum(self.sample_biome)
 
+        self.sample_type = str(self.class_name)
+
         super().__post_init__(**kwargs)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "sample_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
 
 
 @dataclass
@@ -133,7 +143,7 @@ class AirSample(Sample):
 
     class_class_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024["AirSample"]
     class_class_curie: ClassVar[str] = "linkml_tutorial_2024:AirSample"
-    class_name: ClassVar[str] = "Air Sample"
+    class_name: ClassVar[str] = "AirSample"
     class_model_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024.AirSample
 
     id: Union[str, AirSampleId] = None
@@ -149,6 +159,7 @@ class AirSample(Sample):
             self.altitude = float(self.altitude)
 
         super().__post_init__(**kwargs)
+        self.sample_type = str(self.class_name)
 
 
 @dataclass
@@ -157,11 +168,11 @@ class SoilSample(Sample):
 
     class_class_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024["SoilSample"]
     class_class_curie: ClassVar[str] = "linkml_tutorial_2024:SoilSample"
-    class_name: ClassVar[str] = "Soil Sample"
+    class_name: ClassVar[str] = "SoilSample"
     class_model_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024.SoilSample
 
     id: Union[str, SoilSampleId] = None
-    depth: Optional[float] = None
+    depth: Optional[int] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -169,10 +180,11 @@ class SoilSample(Sample):
         if not isinstance(self.id, SoilSampleId):
             self.id = SoilSampleId(self.id)
 
-        if self.depth is not None and not isinstance(self.depth, float):
-            self.depth = float(self.depth)
+        if self.depth is not None and not isinstance(self.depth, int):
+            self.depth = int(self.depth)
 
         super().__post_init__(**kwargs)
+        self.sample_type = str(self.class_name)
 
 
 # Enumerations
@@ -180,21 +192,11 @@ class BiomeTypeEnum(EnumDefinitionImpl):
     """
     The type of biome.
     """
-    forest = PermissibleValue(
-        text="forest",
-        meaning=ENVO["00000111"])
-    lake = PermissibleValue(
-        text="lake",
-        meaning=ENVO["00000020"])
-    ocean = PermissibleValue(
-        text="ocean",
-        meaning=ENVO["00000015"])
-    desert = PermissibleValue(
-        text="desert",
-        meaning=ENVO["01001357"])
-    air = PermissibleValue(
-        text="air",
-        meaning=ENVO["00002005"])
+    forest = PermissibleValue(text="forest")
+    lake = PermissibleValue(text="lake")
+    ocean = PermissibleValue(text="ocean")
+    desert = PermissibleValue(text="desert")
+    air = PermissibleValue(text="air")
 
     _defn = EnumDefinition(
         name="BiomeTypeEnum",
@@ -230,18 +232,21 @@ slots.species = Slot(uri=LINKML_TUTORIAL_2024.species, name="species", curie=LIN
                    model_uri=LINKML_TUTORIAL_2024.species, domain=None, range=Optional[Union[Union[str, "SpeciesEnum"], List[Union[str, "SpeciesEnum"]]]])
 
 slots.depth = Slot(uri=LINKML_TUTORIAL_2024.depth, name="depth", curie=LINKML_TUTORIAL_2024.curie('depth'),
-                   model_uri=LINKML_TUTORIAL_2024.depth, domain=None, range=Optional[float])
+                   model_uri=LINKML_TUTORIAL_2024.depth, domain=None, range=Optional[int])
 
-slots.sample_biome = Slot(uri=LINKML_TUTORIAL_2024.sample_biome, name="sample biome", curie=LINKML_TUTORIAL_2024.curie('sample_biome'),
+slots.sample_biome = Slot(uri=LINKML_TUTORIAL_2024.sample_biome, name="sample_biome", curie=LINKML_TUTORIAL_2024.curie('sample_biome'),
                    model_uri=LINKML_TUTORIAL_2024.sample_biome, domain=None, range=Optional[Union[str, "BiomeTypeEnum"]])
 
 slots.samples = Slot(uri=LINKML_TUTORIAL_2024.samples, name="samples", curie=LINKML_TUTORIAL_2024.curie('samples'),
                    model_uri=LINKML_TUTORIAL_2024.samples, domain=None, range=Optional[Union[Dict[Union[str, SampleId], Union[dict, Sample]], List[Union[dict, Sample]]]])
 
-slots.Air_Sample_id = Slot(uri=LINKML_TUTORIAL_2024.id, name="Air Sample_id", curie=LINKML_TUTORIAL_2024.curie('id'),
-                   model_uri=LINKML_TUTORIAL_2024.Air_Sample_id, domain=AirSample, range=Union[str, AirSampleId],
+slots.sample_type = Slot(uri=LINKML_TUTORIAL_2024.sample_type, name="sample_type", curie=LINKML_TUTORIAL_2024.curie('sample_type'),
+                   model_uri=LINKML_TUTORIAL_2024.sample_type, domain=None, range=Optional[str])
+
+slots.AirSample_id = Slot(uri=LINKML_TUTORIAL_2024.id, name="AirSample_id", curie=LINKML_TUTORIAL_2024.curie('id'),
+                   model_uri=LINKML_TUTORIAL_2024.AirSample_id, domain=AirSample, range=Union[str, AirSampleId],
                    pattern=re.compile(r'^airsample:\d*'))
 
-slots.Soil_Sample_id = Slot(uri=LINKML_TUTORIAL_2024.id, name="Soil Sample_id", curie=LINKML_TUTORIAL_2024.curie('id'),
-                   model_uri=LINKML_TUTORIAL_2024.Soil_Sample_id, domain=SoilSample, range=Union[str, SoilSampleId],
+slots.SoilSample_id = Slot(uri=LINKML_TUTORIAL_2024.id, name="SoilSample_id", curie=LINKML_TUTORIAL_2024.curie('id'),
+                   model_uri=LINKML_TUTORIAL_2024.SoilSample_id, domain=SoilSample, range=Union[str, SoilSampleId],
                    pattern=re.compile(r'^soilsample:\d*'))
