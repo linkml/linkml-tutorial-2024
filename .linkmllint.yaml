@@ -1,0 +1,7 @@
+# .linkmllint.yaml
+
+extends: recommended    # Start with the recommended configuration
+rules:                  # Customize rules here
+  canonical_prefixes:
+    prefixmaps_contexts:
+      - obo
