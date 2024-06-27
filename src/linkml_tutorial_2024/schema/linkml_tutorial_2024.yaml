@@ -56,6 +56,8 @@ classes:
     class_uri: SIO:001050
 
   AirSample:
+    description: >-
+      A sample of air
     is_a: Sample
     slots:
       - altitude
@@ -65,6 +67,8 @@ classes:
 
 
   SoilSample:
+    description: >-
+      A sample of soil
     is_a: Sample
     slots:
       - depth
