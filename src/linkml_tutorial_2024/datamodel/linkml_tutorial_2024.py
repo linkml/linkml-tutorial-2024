@@ -1,5 +1,5 @@
 # Auto generated from linkml_tutorial_2024.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-26T10:03:47
+# Generation date: 2024-07-02T17:10:14
 # Schema: linkml-tutorial-2024
 #
 # id: https://w3id.org/linkml/linkml-tutorial-2024
@@ -139,6 +139,9 @@ class Sample(YAMLRoot):
 
 @dataclass
 class AirSample(Sample):
+    """
+    A sample of air
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024["AirSample"]
@@ -164,6 +167,9 @@ class AirSample(Sample):
 
 @dataclass
 class SoilSample(Sample):
+    """
+    A sample of soil
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = LINKML_TUTORIAL_2024["SoilSample"]

@@ -1,6 +1,7 @@
  syntax="proto3";
  package
 // metamodel_version: 1.7.0
+// A sample of air
 message AirSample
  {
   float latitude = 0
@@ -26,6 +27,7 @@ message SampleCollection
  {
  repeated  sample samples = 0
  }
+// A sample of soil
 message SoilSample
  {
   float latitude = 0

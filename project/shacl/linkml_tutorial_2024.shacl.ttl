@@ -7,6 +7,7 @@
 
 linkml_tutorial_2024:AirSample a sh:NodeShape ;
     sh:closed true ;
+    sh:description "A sample of air" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
             sh:description "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane." ;
@@ -14,23 +15,6 @@ linkml_tutorial_2024:AirSample a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path schema1:latitude ],
-        [ sh:datatype xsd:float ;
-            sh:description "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_tutorial_2024:altitude ],
-        [ sh:datatype xsd:string ;
-            sh:description "The type of sample." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path linkml_tutorial_2024:sample_type ],
-        [ sh:description "The biome type of the biosample" ;
-            sh:in ( "forest" "lake" "ocean" "desert" "air" ) ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path linkml_tutorial_2024:sample_biome ],
         [ sh:datatype xsd:string ;
             sh:description "The unique identifier for the biosample." ;
             sh:maxCount 1 ;
@@ -48,7 +32,24 @@ linkml_tutorial_2024:AirSample a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
-            sh:path schema1:longitude ] ;
+            sh:path schema1:longitude ],
+        [ sh:description "The biome type of the biosample" ;
+            sh:in ( "forest" "lake" "ocean" "desert" "air" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path linkml_tutorial_2024:sample_biome ],
+        [ sh:datatype xsd:float ;
+            sh:description "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml_tutorial_2024:altitude ],
+        [ sh:datatype xsd:string ;
+            sh:description "The type of sample." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path linkml_tutorial_2024:sample_type ] ;
     sh:targetClass linkml_tutorial_2024:AirSample .
 
 linkml_tutorial_2024:SampleCollection a sh:NodeShape ;
@@ -64,28 +65,19 @@ linkml_tutorial_2024:SampleCollection a sh:NodeShape ;
 
 linkml_tutorial_2024:SoilSample a sh:NodeShape ;
     sh:closed true ;
+    sh:description "A sample of soil" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:float ;
+    sh:property [ sh:description "The biome type of the biosample" ;
+            sh:in ( "forest" "lake" "ocean" "desert" "air" ) ;
+            sh:maxCount 1 ;
+            sh:order 5 ;
+            sh:path linkml_tutorial_2024:sample_biome ],
+        [ sh:datatype xsd:float ;
             sh:description "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path schema1:longitude ],
-        [ sh:datatype xsd:string ;
-            sh:description "The type of sample." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path linkml_tutorial_2024:sample_type ],
-        [ sh:description "The species of micro organisms collected in the sample." ;
-            sh:in [ rdf:rest () ] ;
-            sh:order 4 ;
-            sh:path linkml_tutorial_2024:species ],
-        [ sh:description "The biome type of the biosample" ;
-            sh:in ( "forest" "lake" "ocean" "desert" "air" ) ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path linkml_tutorial_2024:sample_biome ],
         [ sh:datatype xsd:string ;
             sh:description "The unique identifier for the biosample." ;
             sh:maxCount 1 ;
@@ -105,7 +97,17 @@ linkml_tutorial_2024:SoilSample a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path schema1:latitude ] ;
+            sh:path schema1:latitude ],
+        [ sh:datatype xsd:string ;
+            sh:description "The type of sample." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path linkml_tutorial_2024:sample_type ],
+        [ sh:description "The species of micro organisms collected in the sample." ;
+            sh:in [ rdf:rest () ] ;
+            sh:order 4 ;
+            sh:path linkml_tutorial_2024:species ] ;
     sh:targetClass linkml_tutorial_2024:SoilSample .
 
 SIO:001050 a sh:NodeShape ;
@@ -113,38 +115,38 @@ SIO:001050 a sh:NodeShape ;
     sh:description "A sample is a limited quantity of something (e.g. an individual or set of individuals from a population,  or a portion of a substance) to be used for testing, analysis, inspection, investigation, demonstration,  or trial use." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "The type of sample." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path linkml_tutorial_2024:sample_type ],
-        [ sh:datatype xsd:float ;
-            sh:description "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path schema1:longitude ],
-        [ sh:datatype xsd:string ;
             sh:description "The unique identifier for the biosample." ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path linkml_tutorial_2024:id ],
-        [ sh:description "The species of micro organisms collected in the sample." ;
-            sh:in [ rdf:rest () ] ;
-            sh:order 3 ;
-            sh:path linkml_tutorial_2024:species ],
+        [ sh:datatype xsd:float ;
+            sh:description "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path schema1:latitude ],
         [ sh:description "The biome type of the biosample" ;
             sh:in ( "forest" "lake" "ocean" "desert" "air" ) ;
             sh:maxCount 1 ;
             sh:order 4 ;
             sh:path linkml_tutorial_2024:sample_biome ],
         [ sh:datatype xsd:float ;
-            sh:description "Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane." ;
+            sh:description "Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path schema1:latitude ] ;
+            sh:order 2 ;
+            sh:path schema1:longitude ],
+        [ sh:description "The species of micro organisms collected in the sample." ;
+            sh:in [ rdf:rest () ] ;
+            sh:order 3 ;
+            sh:path linkml_tutorial_2024:species ],
+        [ sh:datatype xsd:string ;
+            sh:description "The type of sample." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path linkml_tutorial_2024:sample_type ] ;
     sh:targetClass SIO:001050 .
 

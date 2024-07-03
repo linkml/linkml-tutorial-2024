@@ -2,7 +2,7 @@
     "$defs": {
         "AirSample": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A sample of air",
             "properties": {
                 "altitude": {
                     "description": "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.",
@@ -48,7 +48,7 @@
         },
         "AirSample__identifier_optional": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A sample of air",
             "properties": {
                 "altitude": {
                     "description": "Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.",
@@ -216,7 +216,7 @@
         },
         "SoilSample": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A sample of soil",
             "properties": {
                 "depth": {
                     "description": "The depth in centimeters of the biosample.",
@@ -262,7 +262,7 @@
         },
         "SoilSample__identifier_optional": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A sample of soil",
             "properties": {
                 "depth": {
                     "description": "The depth in centimeters of the biosample.",

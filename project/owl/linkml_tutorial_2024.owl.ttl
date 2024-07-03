@@ -12,10 +12,10 @@ linkml_tutorial_2024:SampleCollection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "SampleCollection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml_tutorial_2024:Sample ;
+            owl:minCardinality 0 ;
             owl:onProperty linkml_tutorial_2024:samples ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom linkml_tutorial_2024:Sample ;
             owl:onProperty linkml_tutorial_2024:samples ] ;
     skos:definition "A collection of samples." ;
     skos:inScheme linkml:linkml-tutorial-2024 .
@@ -24,6 +24,15 @@ linkml_tutorial_2024:AirSample a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "AirSample" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:altitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty linkml_tutorial_2024:altitude ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:onDatatype xsd:string ;
                     owl:withRestrictions ( [ xsd:pattern "^airsample:\\d*" ] ) ] ;
@@ -32,18 +41,10 @@ linkml_tutorial_2024:AirSample a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:altitude ],
-        [ a owl:Restriction ;
             owl:allValuesFrom linkml:Float ;
             owl:onProperty linkml_tutorial_2024:altitude ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty linkml_tutorial_2024:altitude ],
         linkml_tutorial_2024:Sample ;
+    skos:definition "A sample of air" ;
     skos:inScheme linkml:linkml-tutorial-2024 .
 
 <https://w3id.org/linkml/linkml-tutorial-2024/BiomeTypeEnum#air> a owl:Class,
@@ -78,23 +79,24 @@ linkml_tutorial_2024:SoilSample a owl:Class,
             owl:maxCardinality 1 ;
             owl:onProperty linkml_tutorial_2024:depth ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:id ],
-        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:onDatatype xsd:string ;
                     owl:withRestrictions ( [ xsd:pattern "^soilsample:\\d*" ] ) ] ;
             owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:id ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty linkml_tutorial_2024:depth ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:Integer ;
             owl:onProperty linkml_tutorial_2024:depth ],
         linkml_tutorial_2024:Sample ;
+    skos:definition "A sample of soil" ;
     skos:inScheme linkml:linkml-tutorial-2024 .
 
 linkml_tutorial_2024:SpeciesEnum a owl:Class,
@@ -154,37 +156,16 @@ linkml_tutorial_2024:Sample a owl:Class,
     rdfs:label "Sample" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty linkml_tutorial_2024:longitude ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty linkml_tutorial_2024:latitude ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty linkml_tutorial_2024:sample_type ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty linkml_tutorial_2024:sample_type ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty linkml_tutorial_2024:longitude ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty linkml_tutorial_2024:sample_biome ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty linkml_tutorial_2024:sample_type ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:sample_biome ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty linkml_tutorial_2024:longitude ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml_tutorial_2024:SpeciesEnum ;
+            owl:minCardinality 0 ;
             owl:onProperty linkml_tutorial_2024:species ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml_tutorial_2024:BiomeTypeEnum ;
             owl:onProperty linkml_tutorial_2024:sample_biome ],
@@ -192,14 +173,35 @@ linkml_tutorial_2024:Sample a owl:Class,
             owl:minCardinality 1 ;
             owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
+            owl:allValuesFrom linkml_tutorial_2024:SpeciesEnum ;
+            owl:onProperty linkml_tutorial_2024:species ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty linkml_tutorial_2024:sample_type ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty linkml_tutorial_2024:sample_type ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:sample_biome ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty linkml_tutorial_2024:longitude ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty linkml_tutorial_2024:sample_biome ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty linkml_tutorial_2024:longitude ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom linkml:Float ;
+            owl:onProperty linkml_tutorial_2024:latitude ],
+        [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty linkml_tutorial_2024:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty linkml_tutorial_2024:species ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Float ;
-            owl:onProperty linkml_tutorial_2024:latitude ],
+            owl:onProperty linkml_tutorial_2024:longitude ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty linkml_tutorial_2024:latitude ] ;
@@ -239,9 +241,9 @@ linkml:linkml-tutorial-2024 a owl:Ontology ;
     skos:definition "A repostitory that walks through schema generation." .
 
 [] a owl:Restriction ;
-    rdfs:subClassOf linkml_tutorial_2024:SoilSample ;
+    rdfs:subClassOf linkml_tutorial_2024:Sample ;
     owl:onProperty linkml_tutorial_2024:sample_type ;
-    owl:someValuesFrom linkml_tutorial_2024:SoilSample .
+    owl:someValuesFrom linkml_tutorial_2024:Sample .
 
 [] a owl:Restriction ;
     rdfs:subClassOf linkml_tutorial_2024:AirSample ;
@@ -249,7 +251,7 @@ linkml:linkml-tutorial-2024 a owl:Ontology ;
     owl:someValuesFrom linkml_tutorial_2024:AirSample .
 
 [] a owl:Restriction ;
-    rdfs:subClassOf linkml_tutorial_2024:Sample ;
+    rdfs:subClassOf linkml_tutorial_2024:SoilSample ;
     owl:onProperty linkml_tutorial_2024:sample_type ;
-    owl:someValuesFrom linkml_tutorial_2024:Sample .
+    owl:someValuesFrom linkml_tutorial_2024:SoilSample .
 

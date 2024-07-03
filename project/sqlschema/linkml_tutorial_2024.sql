@@ -7,14 +7,14 @@
 --     * Slot: sample_biome Description: The biome type of the biosample
 --     * Slot: sample_type Description: The type of sample.
 --     * Slot: SampleCollection_id Description: Autocreated FK slot
--- # Class: "AirSample" Description: ""
+-- # Class: "AirSample" Description: "A sample of air"
 --     * Slot: altitude Description: Altitude is the height of an object or point in relation to a specific reference point, such as the sea level.
 --     * Slot: id Description: The unique identifier for the biosample.
 --     * Slot: latitude Description: Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.
 --     * Slot: longitude Description: Longitude is a geographic position that refers to the angle east or west of a reference meridian between the  two geographical poles to another meridian that passes through an arbitrary point.
 --     * Slot: sample_biome Description: The biome type of the biosample
 --     * Slot: sample_type Description: The type of sample.
--- # Class: "SoilSample" Description: ""
+-- # Class: "SoilSample" Description: "A sample of soil"
 --     * Slot: depth Description: The depth in centimeters of the biosample.
 --     * Slot: id Description: The unique identifier for the biosample.
 --     * Slot: latitude Description: Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the  equatorial plane.

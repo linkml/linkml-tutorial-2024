@@ -629,6 +629,7 @@
     {
       "name": "AirSample",
       "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/AirSample",
+      "description": "A sample of air",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "is_a": "Sample",
       "slots": [
@@ -647,6 +648,7 @@
     {
       "name": "SoilSample",
       "definition_uri": "https://w3id.org/linkml/linkml-tutorial-2024/SoilSample",
+      "description": "A sample of soil",
       "from_schema": "https://w3id.org/linkml/linkml-tutorial-2024",
       "is_a": "Sample",
       "slots": [
@@ -665,9 +667,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_tutorial_2024.yaml",
-  "source_file_date": "2024-06-26T10:03:44",
-  "source_file_size": 3857,
-  "generation_date": "2024-06-26T10:03:46",
+  "source_file_date": "2024-07-02T16:21:20",
+  "source_file_size": 3942,
+  "generation_date": "2024-07-02T17:08:19",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_tutorial_2024.context.jsonld",
