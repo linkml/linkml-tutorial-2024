@@ -1,0 +1,11 @@
+# Example data object
+---
+samples:
+  - id: "airsample:004"
+    latitude: 51.5074
+    longitude: -0.1278
+    species:
+      - NCBITaxon:287      # Pseudomonas aeruginosa
+    sample_biome: air
+    altitude: 30
+    sample_type: AirSample
