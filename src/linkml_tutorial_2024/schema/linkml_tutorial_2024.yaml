@@ -92,6 +92,8 @@ slots:
           Latitude is a geographic coordinate which refers to the angle from a point on the Earth's surface to the 
           equatorial plane.
         range: float
+        minimum_value: -90
+        maximum_value: 90
         slot_uri: schema:latitude
     longitude:
         description: >-
