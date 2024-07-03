@@ -1,0 +1,8 @@
+id: "soilsample:003"
+latitude: 123.456
+longitude: -0.1278
+species:
+  - NCBITaxon:287
+sample_biome: forest
+depth: 30
+sample_type: SoilSample

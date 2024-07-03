@@ -1,0 +1,8 @@
+id: "soilsample:002"
+latitude: 40.7128
+longitude: -74.0060
+species:
+  - NCBITaxon:1423
+sample_biome: desert
+depth: 15
+sample_type: SoilSample
