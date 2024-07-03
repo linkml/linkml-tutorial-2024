@@ -1,12 +1,9 @@
 generator_args:
   jsonschema:
-    include_range_class_descendants: true
-  pydantic:
 
 includes:
   - jsonschema
   - python
-  - pydantic
 excludes:
   - graphql
   - owl
