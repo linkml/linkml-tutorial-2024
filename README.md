@@ -1,3 +1,5 @@
+# THIS REPO HAS BEEN REPLACED BY https://github.com/linkml/linkml-tutorial-2025 
+
 ## linkml-tutorial-2024
 
 This repository contains the source code for the LinkML tutorial for the 2024 Intelligent Systems for Molecular Biology
